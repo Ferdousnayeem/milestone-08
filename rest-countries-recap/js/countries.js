@@ -1,23 +1,29 @@
-
-const loadCountries = () => {
+const loadCountries = () =>{
     fetch('https://restcountries.com/v3.1/all')
     .then(response => response.json())
     .then(data => displayCountries(data))
 }
 
-const displayCountries = countries => {
+const displayCountries = (countries) => {
     const countriesHTML = countries.map(country => getCountryHTML(country))
-    console.log(countriesHTML);
     const container = document.getElementById('countries');
     container.innerHTML = countriesHTML.join(' ');
 }
 
-const getCountryHTML = country => {
+const getCountryHTML = (country) => {
+    console.log(country);
+    const {name, flags} = country
     return `
-    <div>
-        <h2>${country.name.common}</h2>
+    <div class="country">
+        <h2>${name.common}</h2>
+        <img src="${flags.png}" alt="">
     </div>
     `
 }
 
-loadCountries()
+// loadCountries();
+
+
+let ul = `<li>Programming<li>`; 
+ul += `<li>Hero<li>`; 
+console.log(ul);
